@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Terminia.Models.Optimization;
 
 namespace Terminia.Models.Environment
 {
@@ -10,10 +9,11 @@ namespace Terminia.Models.Environment
 
         public GameMap(int sizeX, int sizeY, GameObject defaultGameObject)
         {
-            _map = new GameObject[sizeX][];
-            _defaultGameObject = defaultGameObject;
+            var lines = Enumerable.Repeat(defaultGameObject, sizeX).ToArray();
+            var columns = Enumerable.Repeat(lines, sizeY).ToList();
 
-            ArrayOptimizations.Fill(_map, defaultGameObject);
+            _map = columns.ToArray();
+            _defaultGameObject = defaultGameObject;
         }
 
         public void Put(int x, int y, GameObject gameObject)
@@ -34,8 +34,10 @@ namespace Terminia.Models.Environment
             {
                 foreach(var character in line)
                 {
-                    resultBuilder.Append($"{wrappers[0]}{character.Color}{wrappers[1]}{character.Indicator}");
+                    resultBuilder.Append($"{wrappers[0]}{character?.Color}{wrappers[1]}{character?.Indicator}");
                 }
+
+                resultBuilder.Append(System.Environment.NewLine);
             }
 
             return resultBuilder.ToString();

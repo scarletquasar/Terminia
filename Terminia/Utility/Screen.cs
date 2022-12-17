@@ -24,9 +24,9 @@ namespace Terminia.Utility
 
             parsed.ForEach(value =>
             {
-                Console.ForegroundColor = value.Color;
-                Console.Write(value.Text);
-                Console.ForegroundColor = defaultColor;
+                //Console.ForegroundColor = value.Color;
+                Console.Write("\x1b[31m\x1b[44m" + value.Text);
+                //Console.ForegroundColor = defaultColor;
             });
 
             Console.WriteLine(suffix);
