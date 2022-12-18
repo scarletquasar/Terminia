@@ -8,8 +8,6 @@ namespace Terminia.Utility
         public static void Render(
             string text,
             string wrappers = "{}",
-            string prefix = "\n",
-            string suffix = "\n",
             bool replaceFrame = true)
         {
             if(replaceFrame)
