@@ -19,13 +19,9 @@ namespace Terminia.Utility
             var parsed = parser.FromText(text);
             var colored = parsed.Select(expression => expression.Text.Pastel(expression.Color));
 
-            Console.Write(prefix);
-
             var colorValues = parsed.Select(expression => expression.Text.Pastel(expression.Color)).ToArray();
             var colorText = string.Join("", colorValues);
             Console.Write(colorText);
-
-            Console.WriteLine(suffix);
         }
     }
 }
