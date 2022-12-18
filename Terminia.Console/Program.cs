@@ -3,11 +3,11 @@ using Terminia.Utility;
 
 while(true)
 {
-    var a = Console.ReadKey();
-    var color = int.Parse(a.KeyChar.ToString());
+    var a = Console.ReadKey(true);
+    var color = "#64a822";
 
-    var gameObject = new GameObject(((char)new Random().Next(1, 100)), color);
+    var gameObject = new GameObject('█', color);
     var gameMap = new GameMap(50, 20, gameObject);
-
-    Screen.Render(gameMap.ToString("{}"));
+    var rendered = gameMap.ToString("{}");
+    Screen.Render(rendered);
 }

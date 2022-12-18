@@ -26,13 +26,10 @@
 
                     if (values.Length > 1)
                     {
-                        _ = int.TryParse(values[0], out var colorNumber);
-                        var textContent = values[1];
-
-                        return new ColorExpression(textContent, colorNumber);
+                        return new ColorExpression(values[1], values[0]);
                     }
 
-                    return new ColorExpression(values[0], 15);
+                    return new ColorExpression(values[0], "#FFFF");
                 })
                 .ToList();
         }

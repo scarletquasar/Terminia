@@ -34,7 +34,7 @@ namespace Terminia.Models.Environment
             {
                 foreach(var character in line)
                 {
-                    resultBuilder.Append($"{wrappers[0]}{character?.Color}{wrappers[1]}{character?.Indicator}");
+                    resultBuilder.Append($"{wrappers[0]}{character.Color}{wrappers[1]}{character.Indicator}");
                 }
 
                 resultBuilder.Append(System.Environment.NewLine);

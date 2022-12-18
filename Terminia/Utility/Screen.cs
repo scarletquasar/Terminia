@@ -1,4 +1,5 @@
-﻿using Terminia.Models.Text;
+﻿using Pastel;
+using Terminia.Models.Text;
 
 namespace Terminia.Utility
 {
@@ -9,25 +10,22 @@ namespace Terminia.Utility
             string wrappers = "{}",
             string prefix = "\n",
             string suffix = "\n",
-            bool replaceFrame = true,
-            ConsoleColor defaultColor = ConsoleColor.White)
+            bool replaceFrame = true)
         {
             if(replaceFrame)
             {
-                Console.Clear();
+                Console.SetCursorPosition(0, 0);
             }
 
             var parser = new ColorExpressionParser(wrappers);
             var parsed = parser.FromText(text);
+            var colored = parsed.Select(expression => expression.Text.Pastel(expression.Color));
 
             Console.Write(prefix);
 
-            parsed.ForEach(value =>
-            {
-                //Console.ForegroundColor = value.Color;
-                Console.Write("\x1b[31m\x1b[44m" + value.Text);
-                //Console.ForegroundColor = defaultColor;
-            });
+            var colorValues = parsed.Select(expression => expression.Text.Pastel(expression.Color)).ToArray();
+            var colorText = string.Join("", colorValues);
+            Console.Write(colorText);
 
             Console.WriteLine(suffix);
         }
