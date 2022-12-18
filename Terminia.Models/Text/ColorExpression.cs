@@ -2,13 +2,15 @@
 {
     public class ColorExpression
     {
-        public ColorExpression(string text, string color)
+        public ColorExpression(string text, string fgColor, string bgColor = "#0000")
         {
             Text = text;
-            Color = color;
+            FgColor = fgColor;
+            BgColor = bgColor;
         }
 
         public string Text { get; set; }
-        public string Color { get; set; }
+        public string FgColor { get; set; }
+        public string BgColor { get; set; }
     }
 }

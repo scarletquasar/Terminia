@@ -26,6 +26,12 @@
 
                     if (values.Length > 1)
                     {
+                        if(values[0].Length < 2)
+                        {
+                            var colors = values[0].Split(" ");
+                            return new ColorExpression(values[1], colors[0], colors[1]);
+                        }
+
                         return new ColorExpression(values[1], values[0]);
                     }
 

@@ -17,10 +17,14 @@ namespace Terminia.Utility
 
             var parser = new ColorExpressionParser(wrappers);
             var parsed = parser.FromText(text);
-            var colored = parsed.Select(expression => expression.Text.Pastel(expression.Color));
+            var colored = parsed.Select(expression =>
+            {
+                return expression.Text
+                    .Pastel(expression.FgColor)
+                    .PastelBg(expression.BgColor);
+            });
 
-            var colorValues = parsed.Select(expression => expression.Text.Pastel(expression.Color)).ToArray();
-            var colorText = string.Join("", colorValues);
+            var colorText = string.Join("", colored);
             Console.Write(colorText);
         }
     }
