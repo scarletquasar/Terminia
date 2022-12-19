@@ -39,8 +39,8 @@
             _currentXPos += x;
             _currentYPos += y;
 
-            if(_currentXPos < 0) _currentXPos = 0;
-            if(_currentYPos < 0) _currentYPos = 0;
+            if (_currentXPos < 0) _currentXPos = 0;
+            if (_currentYPos < 0) _currentYPos = 0;
             if (_currentXPos > _gameMap.MaxX - 1) _currentXPos = _gameMap.MaxX - 1;
             if (_currentYPos > _gameMap.MaxY - 1) _currentYPos = _gameMap.MaxY - 1;
 

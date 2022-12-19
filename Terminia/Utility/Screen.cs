@@ -10,7 +10,9 @@ namespace Terminia.Utility
             string wrappers = "{}",
             bool replaceFrame = true)
         {
-            if(replaceFrame)
+            Console.CursorVisible = false;
+
+            if (replaceFrame)
             {
                 Console.SetCursorPosition(0, 0);
             }
