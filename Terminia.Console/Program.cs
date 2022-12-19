@@ -1,13 +1,37 @@
 ﻿using Terminia.Models.Environment;
 using Terminia.Utility;
 
-while(true)
-{
-    var a = Console.ReadKey(true);
-    var color = "#64a822";
+var color = "#64a822";
 
-    var gameObject = new GameObject(a.KeyChar, color);
-    var gameMap = new GameMap(50, 20, gameObject);
+var gameObject = new GameObject('.', color);
+var gameMap = new GameMap(32, 16, gameObject);
+var gameActor = new GameActor(gameMap, '@', "#ffff");
+
+await gameActor.Initialize();
+
+while (true)
+{
     var rendered = gameMap.ToString("{}");
     Screen.Render(rendered);
+
+    var control = Console.ReadKey(true);
+
+    switch(control.Key)
+    {
+        case ConsoleKey.W:
+            await gameActor.Move(0, -1);
+            break;
+
+        case ConsoleKey.A:
+            await gameActor.Move(-1, 0);
+            break;
+
+        case ConsoleKey.S:
+            await gameActor.Move(0, 1);
+            break;
+
+        case ConsoleKey.D:
+            await gameActor.Move(1, 0);
+            break;
+    }
 }
