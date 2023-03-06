@@ -1,10 +1,12 @@
 ﻿using Terminia.Models.Environment;
 using Terminia.Utility;
 
+Console.Title = "MyGame";
+
 var color = "#64a822";
 
 var gameObject = new GameObject('.', color);
-var gameMap = new GameMap(32, 16, gameObject);
+var gameMap = new GameMap(8, 4, gameObject);
 var gameActor = new GameActor(gameMap, '@', "#ffff");
 
 await gameActor.Initialize();
